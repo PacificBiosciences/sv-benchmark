@@ -27,7 +27,9 @@ Information how to install `conda` and add the `bioconda` channel is available
 on https://bioconda.github.io/.
 
 ```sh
-conda install pbmm2==0.12.0 pbsv==2.2.* svim==0.4.3 sniffles==1.0.10
+conda create --name sv python=3.6
+source activate sv
+conda install pbmm2==0.12.0 pbsv==2.2 svim==0.4.3 sniffles==1.0.10
 ```
 
 # Get data
