@@ -12,7 +12,7 @@ At 28-fold coverage:
 
 |Run|F1^ %|Precision %|Recall %|FP|FN|FP+FN|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|[**pbsv**](https://github.com/PacificBiosciences/pbsv)|96.33|94.68|98.04|531|189|720|
+|[**pbsv**](https://github.com/PacificBiosciences/pbsv)|96.29|94.61|98.02|538|191|729|
 |[**svim**](https://github.com/eldariont/svim)|94.12|93.76|94.48|606|532|1138|
 |[**sniffles**](https://github.com/fritzsedlazeck/Sniffles)|93.56|93.30|93.83|650|595|1245|
 
