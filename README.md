@@ -55,7 +55,7 @@ git clone https://github.com/spiralgenetics/truvari
 ```sh
 curl -s ftp://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/reference/phase2_reference_assembly_sequence/hs37d5.fa.gz > ref/human_hs37d5.fasta.gz
 gunzip ref/human_hs37d5.fasta.gz
-sed -i '/^[^>]/ y/BDEFHIJKLMNOPQRSUVWXYZbdefhijklmnopqrsuvwxyz/NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN/' human_hs37d5.fasta
+sed -i '/^[^>]/ y/BDEFHIJKLMNOPQRSUVWXYZbdefhijklmnopqrsuvwxyz/NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN/' ref/human_hs37d5.fasta
 ```
 
 5) Download hg19 tandem repeat annotations:
@@ -65,8 +65,9 @@ curl -s https://raw.githubusercontent.com/PacificBiosciences/pbsv/master/annotat
 
 6) Download all `.fastq` files:
 ```sh
-curl -s ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/data/AshkenazimTrio/HG002_NA24385_son/PacBio_CCS_15kb/HG002.15kb.Q20.tar.gz > fastqs/HG002.15kb.Q20.tar.gz
-tar xvzfC fastqs/HG002.15kb.Q20.tar.gz fastqs/
+FTPDIR=ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/data/AshkenazimTrio/HG002_NA24385_son/PacBio_CCS_15kb/
+curl -s ${FTPDIR} | awk '{print $9}' | grep '.fastq' > fastqs/filelist
+for i in `less fastqs/filelist`; do curl -s ${FTPDIR}${i} > fastqs/${i}; done
 ```
 
 # Alignment
