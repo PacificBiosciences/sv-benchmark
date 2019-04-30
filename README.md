@@ -67,7 +67,7 @@ curl -s https://raw.githubusercontent.com/PacificBiosciences/pbsv/master/annotat
 ```sh
 FTPDIR=ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/data/AshkenazimTrio/HG002_NA24385_son/PacBio_CCS_15kb/
 curl -s ${FTPDIR} | awk '{print $9}' | grep '.fastq' > fastqs/filelist
-for i in `less fastqs/filelist`; do curl -s ${FTPDIR}${i} > fastqs/${i}; done
+for fastq in $(curl -s -l ${FTPDIR} | grep -E '.fastq$'); do curl -s ${FTPDIR}${fastq} > fastqs/${fastq}; done
 ```
 
 # Alignment
