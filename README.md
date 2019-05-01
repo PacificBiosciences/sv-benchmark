@@ -108,7 +108,7 @@ tabix tools/pbsv/hg2.pbsv.vcf.gz
 
 9a) Merge and re-sort alignments:
 ```sh
-find ./alns -name ".bam" -exec readlink -f {} \; > alns_merged/bam_list.fn
+ls alns/*.bam > alns_merged/bam_list.fn
 samtools merge -b alns_merged/bam_list.fn alns_merged/hs37d5.all.bam
 samtools sort -n alns_merged/hs37d5.all.bam > alns_merged/hs37d5.all.querysorted.bam
 ```
